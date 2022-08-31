@@ -4,39 +4,40 @@ import menu.Salad;
 import warehouse.Alcohol;
 import warehouse.NonAlcohol;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private List<Menu>menuList;
+   private List<Menu>items;
+   public Order()
+   {
+       this.items = new ArrayList<>();
+   }
 
-    public Order()
+    public List<Menu> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Menu> items) {
+        this.items = items;
+    }
+
+    public void addItem(Menu item)
     {
-        menuList = new ArrayList<>();
-    }
-
-    public void addMenuItem(Menu menu)
-    {
-        menuList.add(menu);
-    }
-
-    public List<Menu> getMenuList() {
-        return menuList;
-    }
-
-    public void setMenuList(List<Menu> menuList) {
-        this.menuList = menuList;
+        this.items.add(item);
     }
 
     @Override
-    public String toString()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Order: " + "\n");
-        for(Menu menu : menuList)
+
+        public String toString()
         {
-            sb.append("Menu: " + menu + "\n");
+            StringBuilder sb = new StringBuilder();
+            for(Menu menu : items)
+            {
+                sb.append(menu);
+                sb.append("\n");
+            }
+            return sb.toString();
         }
-        return sb.toString();
-    }
 }
